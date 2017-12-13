@@ -1,0 +1,24 @@
+from __future__ import division
+import numpy
+from scipy.fftpack import dct
+
+def mfcc(signal, samplerate=16000, winlen=0.025, winstep=0.01, numcep=13,
+         nfilt=26, nfft=512, lowfreq=0, highfreq=None, preemph=0.97, ceplifter=22,
+         appendEnergy=True, winfunc=lambda x:numpy.ones((x, ))):
+    """Compute the MFCC features from audio signal
+    :param signal: the audio signal, 1-d array
+    :param samplerate: the samplerate of the signal, default to 16000
+    :param winlen: the length of the window
+    :param winstep: the length of each step of the move of window
+    :param numcep: the number cepstrum to return
+    :param nfilt: the number of filters
+    :param nfft: the FFT size
+    :param lowfreq: the lower band edge of mel filters
+    :param highfreq: the higher band edge of mel filters
+    :param preemph: apply preemphasis filter with preemph as coefficent
+    :param cepfilter: apply a lifter to final cepstral coefficients.
+    :param appendEnergy: if true, the zeroth cepstral coefficient is replaced with the log of the total frame energy
+    :param winfunc: the analysis windwo to apply to each frame
+    :returns: a numpy array of size()
+    """
+    
